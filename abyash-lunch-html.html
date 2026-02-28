@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abhyas — LinkedIn Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0f1e;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans', sans-serif;
+    padding: 40px 20px;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ── HEADER BANNER ── */
+  .banner {
+    background: linear-gradient(135deg, #1a1f3a 0%, #0f1628 60%, #12203a 100%);
+    border: 1px solid rgba(99,179,237,0.15);
+    border-radius: 20px;
+    padding: 48px 44px 40px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .banner::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(99,179,237,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .banner::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(160,122,255,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .tag-line {
+    display: inline-block;
+    background: rgba(99,179,237,0.12);
+    border: 1px solid rgba(99,179,237,0.3);
+    color: #63b3ed;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  .banner h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+  }
+
+  .banner h1 span {
+    background: linear-gradient(90deg, #63b3ed, #a07aff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .banner .subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-top: 10px;
+    letter-spacing: 0.2px;
+  }
+
+  /* ── POST CARD ── */
+  .post-card {
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 40px 44px;
+    animation: fadeUp 0.6s 0.1s ease both;
+    position: relative;
+  }
+
+  .post-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .post-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .post-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.82);
+    white-space: pre-wrap;
+    font-weight: 300;
+  }
+
+  .post-text .line-hook {
+    font-family: 'Syne', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .post-text .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: #63b3ed;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-top: 22px;
+    margin-bottom: 4px;
+  }
+
+  .post-text .bullet {
+    display: block;
+    padding-left: 18px;
+    position: relative;
+    color: rgba(255,255,255,0.78);
+  }
+  .post-text .bullet::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #a07aff;
+    font-size: 12px;
+    top: 2px;
+  }
+
+  .post-text .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+
+  .stack-badge {
+    background: rgba(99,179,237,0.08);
+    border: 1px solid rgba(99,179,237,0.2);
+    color: #63b3ed;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .hashtags {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hashtag {
+    color: #a07aff;
+    font-size: 13.5px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── COPY BUTTON ── */
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #63b3ed, #a07aff);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.2s, transform 0.15s;
+    animation: fadeUp 0.6s 0.2s ease both;
+    letter-spacing: 0.3px;
+  }
+  .copy-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .copy-btn:active { transform: translateY(0); }
+  .copy-btn.copied { background: linear-gradient(135deg, #38a169, #2f855a); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 520px) {
+    .banner, .post-card { padding: 30px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="tag-line">🚀 Project Launch</div>
+    <h1>Abhyas<br/><span>Learning Platform</span></h1>
+    <p class="subtitle">Built in 1 month · Student Quiz & Practice System</p>
+  </div>
+
+  <!-- POST CARD -->
+  <div class="post-card">
+    <div class="post-label">LinkedIn Post</div>
+
+    <div class="post-text" id="postContent">
+<span class="line-hook">🚀 I spent the last 1 month building Abhyas — a full-stack learning platform for students. Here's what it does 👇</span>
+
+<span class="section-title">📌 What is Abhyas?</span><span class="bullet">Abhyas is a centralized quiz & practice platform where students can attempt tests created by their admin and track their learning progress — all in one place.</span>
+
+<span class="section-title">❗ Problem it Solves</span><span class="bullet">Students often struggle to practice concepts after class — no structured tests, no progress tracking, no feedback loop.</span>
+<span class="bullet">Admins/Teachers waste hours manually creating and sharing tests across different tools.</span>
+<span class="bullet">Abhyas brings everything under one roof — test creation, student management, and reporting.</span>
+
+<span class="section-title">✨ What Makes it Unique</span><span class="bullet">5 Question Types — MCQ, True/False, Short Answer, Long Answer, and Coding questions</span>
+<span class="bullet">Auto-submit + Resume — Test auto-submits on timeout & students can resume if they leave mid-test</span>
+<span class="bullet">Bulk Question Upload — Admins can upload hundreds of questions at once</span>
+<span class="bullet">Unlimited Practice — Students can reattempt tests as many times as they want</span>
+<span class="bullet">Full Reporting — Both students and admins get detailed performance reports</span>
+
+<span class="section-title">🛠️ Tech Stack</span><div class="stack-row"><span class="stack-badge">Next.js 14</span><span class="stack-badge">TypeScript</span><span class="stack-badge">Prisma ORM</span><span class="stack-badge">Neon PostgreSQL</span><span class="stack-badge">Zod</span><span class="stack-badge">ShadCN UI</span><span class="stack-badge">Tailwind CSS</span></div>
+
+<span class="section-title">📚 Key Features</span><span class="bullet">Admin dashboard — manage students, courses, chapters, tests & questions</span>
+<span class="bullet">Student dashboard — enrolled courses, test history, full score reports</span>
+<span class="bullet">Secure auth with JWT access + refresh tokens</span>
+<span class="bullet">REST API with 30+ endpoints — fully structured and documented</span>
+
+If you're building something similar or want to collaborate, let's connect! 🙌
+
+<div class="hashtags">
+  <span class="hashtag">#NextJS</span>
+  <span class="hashtag">#FullStackDevelopment</span>
+  <span class="hashtag">#WebDevelopment</span>
+  <span class="hashtag">#EdTech</span>
+  <span class="hashtag">#OpenToWork</span>
+  <span class="hashtag">#TypeScript</span>
+  <span class="hashtag">#Prisma</span>
+  <span class="hashtag">#100DaysOfCode</span>
+  <span class="hashtag">#BuildInPublic</span>
+  <span class="hashtag">#LearningPlatform</span>
+  <span class="hashtag">#SideProject</span>
+  <span class="hashtag">#ReactJS</span>
+</div>
+    </div>
+  </div>
+
+  <!-- COPY BUTTON -->
+  <button class="copy-btn" onclick="copyPost()" id="copyBtn">
+    📋 Copy Post Text for LinkedIn
+  </button>
+</div>
+
+<script>
+function copyPost() {
+  const text = `🚀 I spent the last 1 month building Abhyas — a full-stack learning platform for students. Here's what it does 👇
+
+📌 What is Abhyas?
+Abhyas is a centralized quiz & practice platform where students can attempt tests created by their admin and track their learning progress — all in one place.
+
+❗ Problem it Solves
+→ Students often struggle to practice concepts after class — no structured tests, no progress tracking, no feedback loop.
+→ Admins/Teachers waste hours manually creating and sharing tests across different tools.
+→ Abhyas brings everything under one roof — test creation, student management, and reporting.
+
+✨ What Makes it Unique
+→ 5 Question Types — MCQ, True/False, Short Answer, Long Answer, and Coding questions
+→ Auto-submit + Resume — Test auto-submits on timeout & students can resume if they leave mid-test
+→ Bulk Question Upload — Admins can upload hundreds of questions at once
+→ Unlimited Practice — Students can reattempt tests as many times as they want
+→ Full Reporting — Both students and admins get detailed performance reports
+
+🛠️ Tech Stack
+Next.js 14 · TypeScript · Prisma ORM · Neon PostgreSQL · Zod · ShadCN UI · Tailwind CSS
+
+📚 Key Features
+→ Admin dashboard — manage students, courses, chapters, tests & questions
+→ Student dashboard — enrolled courses, test history, full score reports
+→ Secure auth with JWT access + refresh tokens
+→ REST API with 30+ endpoints — fully structured and documented
+
+If you're building something similar or want to collaborate, let's connect! 🙌
+
+#NextJS #FullStackDevelopment #WebDevelopment #EdTech #OpenToWork #TypeScript #Prisma #100DaysOfCode #BuildInPublic #LearningPlatform #SideProject #ReactJS`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✅ Copied! Paste it on LinkedIn';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 Copy Post Text for LinkedIn';
+      btn.classList.remove('copied');
+    }, 3000);
+  });
+}
+</script>
+
+</body>
+</html>
