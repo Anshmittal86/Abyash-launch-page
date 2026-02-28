@@ -287,56 +287,7 @@ If you're building something similar or want to collaborate, let's connect! 🙌
 </div>
     </div>
   </div>
-
-  <!-- COPY BUTTON -->
-  <button class="copy-btn" onclick="copyPost()" id="copyBtn">
-    📋 Copy Post Text for LinkedIn
-  </button>
 </div>
-
-<script>
-function copyPost() {
-  const text = `🚀 I spent the last 1 month building Abhyas — a full-stack learning platform for students. Here's what it does 👇
-
-📌 What is Abhyas?
-Abhyas is a centralized quiz & practice platform where students can attempt tests created by their admin and track their learning progress — all in one place.
-
-❗ Problem it Solves
-→ Students often struggle to practice concepts after class — no structured tests, no progress tracking, no feedback loop.
-→ Admins/Teachers waste hours manually creating and sharing tests across different tools.
-→ Abhyas brings everything under one roof — test creation, student management, and reporting.
-
-✨ What Makes it Unique
-→ 5 Question Types — MCQ, True/False, Short Answer, Long Answer, and Coding questions
-→ Auto-submit + Resume — Test auto-submits on timeout & students can resume if they leave mid-test
-→ Bulk Question Upload — Admins can upload hundreds of questions at once
-→ Unlimited Practice — Students can reattempt tests as many times as they want
-→ Full Reporting — Both students and admins get detailed performance reports
-
-🛠️ Tech Stack
-Next.js 14 · TypeScript · Prisma ORM · Neon PostgreSQL · Zod · ShadCN UI · Tailwind CSS
-
-📚 Key Features
-→ Admin dashboard — manage students, courses, chapters, tests & questions
-→ Student dashboard — enrolled courses, test history, full score reports
-→ Secure auth with JWT access + refresh tokens
-→ REST API with 30+ endpoints — fully structured and documented
-
-If you're building something similar or want to collaborate, let's connect! 🙌
-
-#NextJS #FullStackDevelopment #WebDevelopment #EdTech #OpenToWork #TypeScript #Prisma #100DaysOfCode #BuildInPublic #LearningPlatform #SideProject #ReactJS`;
-
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = '✅ Copied! Paste it on LinkedIn';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = '📋 Copy Post Text for LinkedIn';
-      btn.classList.remove('copied');
-    }, 3000);
-  });
-}
-</script>
 
 </body>
 </html>
